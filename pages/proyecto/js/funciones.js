@@ -44,6 +44,31 @@ function agregarepicas(epica, descripcion, id_proyecto) {
 
 }
 
+function agregarhistorias(usuario, necesidad, razon, id_epicas) {
+
+    cadena = "usuario=" + usuario +
+            "&necesidad=" + necesidad +
+            "&razon=" + razon +
+            "&id_epicas=" + id_epicas;
+
+
+    $.ajax({
+        type: "POST",
+        url: "php/agregarhistoria.php",
+        data: cadena,
+        success: function (r) {
+            if (r == 1) {
+                $('#tabla_historias').load('componentes/tabla_historias.php');
+                alertify.success("agregado con exito :)");
+            } else {
+                alertify.error("Fallo el servidor :(");
+            }
+        }
+    });
+
+}
+
+
 function agregaform(datos) {
 
     d = datos.split('||');
@@ -62,6 +87,18 @@ function agregaformEpica(datos) {
     $('#idepica_edt').val(d[0]);
     $('#epicac').val(d[1]);
     $('#descripcionc').val(d[2]);
+
+}
+function agregaformHistoria(datos) {
+
+    d = datos.split('||');
+
+    $('#idhistoria_edt').val(d[0]);
+    $('#usuarioc').val(d[2]);
+    $('#necesidadc').val(d[4]);
+    $('#razonc').val(d[6]);
+    $('#prioridadc').val(d[7]);
+    $('#puntajec').val(d[8]);
 
 }
 
@@ -93,6 +130,41 @@ function actualizaepicas() {
 
 }
 
+function actualizahistoria() {
+
+
+    idhistoria_edt = $('#idhistoria_edt').val();
+    rolc = $('#usuarioc').val();
+    necesidadc = $('#necesidadc').val();
+    razonc = $('#razonc').val();
+    prioridadc = $('#prioridadc').val();
+    puntajec = $('#puntajec').val();
+
+    cadena = "&idhistoria_edt=" + idhistoria_edt +
+            "&rolc=" + rolc +
+            "&necesidadc=" + necesidadc +
+            "&razonc=" + razonc +
+            "&prioridadc=" + prioridadc +
+            "&puntajec=" + puntajec;
+
+    $.ajax({
+        type: "POST",
+        url: "php/actualizahistoria.php",
+        data: cadena,
+        success: function (r) {
+
+            if (r == 1) {
+               $('#tabla_historias').load('componentes/tabla_historias.php');
+                 alertify.success("Actualizado con exito :)");
+            } else {
+                alertify.error("Fallo el servidor :(");
+            }
+        }
+    });
+
+}
+
+
 function actualizacursos() {
 
 
@@ -121,22 +193,42 @@ function actualizacursos() {
 
 }
 
-function preguntarSiNo(id) {
-    alertify.confirm('Eliminar proyecto', '¿Esta seguro de eliminar este proyecto?',
-            function () {
-                eliminarDatos(id)
-            }
-    , function () {
-        alertify.error('Se cancelo')
-    });
-}
+
 function preguntarSiNoepica(id) {
     alertify.confirm('Eliminar epica', '¿Esta seguro de eliminar esta epica?',
             function () {
                 eliminarDatosEpica(id)
             }
     , function () {
-        alertify.error('Se cancelo')
+        alertify.error('Se cancelo')});
+}
+
+
+function preguntarSiNohistoria(id) {
+    alertify.confirm('Eliminar historia', '¿Esta seguro de eliminar esta historia?',
+            function () {
+                eliminarDatosHistoria(id)
+            }
+    , function () {
+        alertify.error('Se cancelo')});
+}
+
+function eliminarDatosHistoria(id) {
+
+    cadena = "id=" + id;
+
+    $.ajax({
+        type: "POST",
+        url: "php/eliminarDatosHistoria.php",
+        data: cadena,
+        success: function (r) {
+            if (r == 1) {
+               $('#tabla_historias').load('componentes/tabla_historias.php');
+                 alertify.success("Eliminado con exito!");
+            } else {
+                alertify.error("Fallo el servidor :(");
+            }
+        }
     });
 }
 
@@ -198,3 +290,14 @@ function ingresar_al_proyecto(id) {
     });
 
 }
+
+function preguntarSiNo(id) {
+    alertify.confirm('Eliminar proyecto', '¿Esta seguro de eliminar este proyecto?',
+            function () {
+                eliminarDatos(id)
+            }
+    , function () {
+        alertify.error('Se cancelo')
+    });
+}
+

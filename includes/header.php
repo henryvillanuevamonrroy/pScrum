@@ -59,13 +59,13 @@
 
     <!-- Tabla dinamica -->
 
-    <link rel="stylesheet" type="text/css" href="../../pages/horario/librerias/alertifyjs/css/alertify.css">
-    <link rel="stylesheet" type="text/css" href="../../pages/horario/librerias/alertifyjs/css/themes/default.css">
+    <link rel="stylesheet" type="text/css" href="../../pages/proyecto/librerias/alertifyjs/css/alertify.css">
+    <link rel="stylesheet" type="text/css" href="../../pages/proyecto/librerias/alertifyjs/css/themes/default.css">
     <link rel="stylesheet" type="text/css" href="../../pages/horario/librerias/select2/css/select2.css">
 
     <script src="../../pages/horario/librerias/jquery-3.2.1.min.js"></script>
 
-    <script src="../../pages/horario/librerias/alertifyjs/alertify.js"></script>
+    <script src="../../pages/proyecto/librerias/alertifyjs/alertify.js"></script>
     <script src="../../pages/horario/librerias/select2/js/select2.js"></script>
 </head>
 

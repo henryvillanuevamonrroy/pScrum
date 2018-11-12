@@ -22,7 +22,7 @@ $_SESSION['$id_epicas_name'] = $id_epicas_name;
     <section class="content-header">
 
         <section class="content-header">
-            <h1><font size="5" face="verdana" color="purple"><strong><u>Epica : <?php echo $id_epicas_name;?></u></strong></font> <font size="4" face="verdana" color="green"> - Proyecto <?php echo $_SESSION['id_proyecto_name'];?></font></h1><br>
+            <h1><font size="5" face="verdana" color="purple"><strong><u>Epica : <?php echo $id_epicas_name;?></u></strong></font> <br> <font size="4" face="verdana" color="green">Proyecto <?php echo $_SESSION['id_proyecto_name'];?></font></h1><br>
             <h1> <i class='fa fa-edit'></i> <u>Administrar Historias</u></h1>
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="#"><i class="fa fa-home"></i>Inicio</a></li>
@@ -79,19 +79,20 @@ $_SESSION['$id_epicas_name'] = $id_epicas_name;
 
 <script type="text/javascript">
     $(document).ready(function () {
-        $('#guardarnuevo_epica').click(function () {
-            epica = $('#epica').val();
-            descripcion = $('#descripcion').val();
-            id_proyecto = $('#id_proyecto').val();
+        $('#guardarnuevo_historia').click(function () {
+            usuario = $('#usuario').val();
+            necesidad = $('#necesidad').val();
+            razon = $('#razon').val();
+            id_epicas = $('#id_epicas').val();
             
-            agregarepicas(epica, descripcion,id_proyecto);
+            agregarhistorias(usuario, necesidad,razon,id_epicas);
         });
 
 
 
-        $('#actualizaepica').click(function () {
+        $('#actualizahistoria').click(function () {
 
-            actualizaepicas();
+            actualizahistoria();
         });
 
     });
