@@ -8,11 +8,11 @@
         <h4 class="modal-title" id="myModalLabel">Agrega nueva Epica</h4>
       </div>
       <div class="modal-body">
-        	<label>Epica</label>
+        	<label>Epica :</label>
                 <input type="text"  placeholder="epica" name="" id="epica" class="form-control input-sm">
-                <label>Descripci&oacute;n</label>
+                <label>Descripci&oacute;n :</label>
                 <textarea  placeholder="decripcion" name="" id="descripcion" class="form-control input-sm" rows="5"></textarea>
-             <input type="hidden" id="id_proyecto" name="" value="<?php echo $_SESSION['id_proyecto']; ?>">
+                <input type="hidden" id="id_proyecto" name="" value="<?php echo $_SESSION['id_proyecto']; ?>">
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-primary" data-dismiss="modal" id="guardarnuevo_epica">

@@ -67,7 +67,53 @@ function agregarhistorias(usuario, necesidad, razon, id_epicas) {
     });
 
 }
+function agregarcriterios(escenario, desencadenante, resultado, id_historia) {
 
+    cadena = "escenario=" + escenario +
+            "&desencadenante=" + desencadenante +
+            "&resultado=" + resultado +
+            "&id_historia=" + id_historia;
+
+
+    $.ajax({
+        type: "POST",
+        url: "php/agregarcriterios.php",
+        data: cadena,
+        success: function (r) {
+            if (r == 1) {
+                $('#tabla_criterios_aceptacion').load('componentes/tabla_criterios_aceptacion.php');
+                $('#tabla_tareas').load('componentes/tabla_tareas.php');
+                alertify.success("agregado con exito :)");
+            } else {
+                alertify.error("Fallo el servidor :(");
+            }
+        }
+    });
+
+}
+
+function agregartareas(descripcion_tarea, id_historia_tarea) {
+
+    cadena = "descripcion_tarea=" + descripcion_tarea +
+            "&id_historia_tarea=" + id_historia_tarea;
+
+
+    $.ajax({
+        type: "POST",
+        url: "php/agregartareas.php",
+        data: cadena,
+        success: function (r) {
+            if (r == 1) {
+                $('#tabla_criterios_aceptacion').load('componentes/tabla_criterios_aceptacion.php');
+                $('#tabla_tareas').load('componentes/tabla_tareas.php');
+                alertify.success("agregado con exito :)");
+            } else {
+                alertify.error("Fallo el servidor :(");
+            }
+        }
+    });
+
+}
 
 function agregaform(datos) {
 
@@ -154,8 +200,8 @@ function actualizahistoria() {
         success: function (r) {
 
             if (r == 1) {
-               $('#tabla_historias').load('componentes/tabla_historias.php');
-                 alertify.success("Actualizado con exito :)");
+                $('#tabla_historias').load('componentes/tabla_historias.php');
+                alertify.success("Actualizado con exito :)");
             } else {
                 alertify.error("Fallo el servidor :(");
             }
@@ -164,6 +210,38 @@ function actualizahistoria() {
 
 }
 
+function actualizacriterio() {
+
+
+    idcriterio_edt = $('#idcriterio_edt').val();
+    escenarioc = $('#escenarioc').val();
+    desencadenantec = $('#desencadenantec').val();
+    resultadoc = $('#resultadoc').val();
+    estadoc = $('#estadoc').val();
+
+    cadena = "&idcriterio_edt=" + idcriterio_edt +
+            "&escenarioc=" + escenarioc +
+            "&desencadenantec=" + desencadenantec +
+            "&resultadoc=" + resultadoc +
+            "&estadoc=" + estadoc;
+
+    $.ajax({
+        type: "POST",
+        url: "php/actualizacriterio.php",
+        data: cadena,
+        success: function (r) {
+
+            if (r == 1) {
+               $('#tabla_criterios_aceptacion').load('componentes/tabla_criterios_aceptacion.php');
+                $('#tabla_tareas').load('componentes/tabla_tareas.php');
+                  alertify.success("Actualizado con exito :)");
+            } else {
+                alertify.error("Fallo el servidor :(");
+            }
+        }
+    });
+
+}
 
 function actualizacursos() {
 
@@ -200,7 +278,8 @@ function preguntarSiNoepica(id) {
                 eliminarDatosEpica(id)
             }
     , function () {
-        alertify.error('Se cancelo')});
+        alertify.error('Se cancelo')
+    });
 }
 
 
@@ -210,7 +289,8 @@ function preguntarSiNohistoria(id) {
                 eliminarDatosHistoria(id)
             }
     , function () {
-        alertify.error('Se cancelo')});
+        alertify.error('Se cancelo')
+    });
 }
 
 function eliminarDatosHistoria(id) {
@@ -223,8 +303,8 @@ function eliminarDatosHistoria(id) {
         data: cadena,
         success: function (r) {
             if (r == 1) {
-               $('#tabla_historias').load('componentes/tabla_historias.php');
-                 alertify.success("Eliminado con exito!");
+                $('#tabla_historias').load('componentes/tabla_historias.php');
+                alertify.success("Eliminado con exito!");
             } else {
                 alertify.error("Fallo el servidor :(");
             }
@@ -270,6 +350,26 @@ function eliminarDatos(id) {
     });
 }
 
+function eliminarDatostarea(id) {
+
+    cadena = "id=" + id;
+
+    $.ajax({
+        type: "POST",
+        url: "php/eliminarDatostarea.php",
+        data: cadena,
+        success: function (r) {
+            if (r == 1) {
+               $('#tabla_criterios_aceptacion').load('componentes/tabla_criterios_aceptacion.php');
+                $('#tabla_tareas').load('componentes/tabla_tareas.php');
+                 alertify.success("Eliminado con exito!");
+            } else {
+                alertify.error("Fallo el servidor :(");
+            }
+        }
+    });
+}
+
 
 function ingresar_al_proyecto(id) {
 
@@ -301,3 +401,116 @@ function preguntarSiNo(id) {
     });
 }
 
+function preguntarSiNotarea(id) {
+    alertify.confirm('Eliminar tarea', '¿Esta seguro de eliminar esta tarea?',
+            function () {
+                eliminarDatostarea(id)
+            }
+    , function () {
+        alertify.error('Se cancelo')
+    });
+}
+
+function preguntarSiNotarea_inicio(id) {
+    alertify.confirm('Siguiente paso', '¿Esta seguro de inciar esta tarea?',
+            function () {
+                iniciartarea(id)
+            }
+    , function () {
+        alertify.error('Se cancelo')
+    });
+}
+
+function preguntarSiNotarea_final(id) {
+    alertify.confirm('Siguiente paso', '¿Esta seguro de cerrar esta tarea?',
+            function () {
+                finalizartarea(id)
+            }
+    , function () {
+        alertify.error('Se cancelo')
+    });
+}
+
+function iniciartarea(id) {
+
+    cadena = "id=" + id;
+
+    $.ajax({
+        type: "POST",
+        url: "php/iniciartarea.php",
+        data: cadena,
+        success: function (r) {
+            if (r == 1) {
+               $('#tabla_criterios_aceptacion').load('componentes/tabla_criterios_aceptacion.php');
+                $('#tabla_tareas').load('componentes/tabla_tareas.php');
+                 alertify.success("Eliminado con exito!");
+            } else {
+                alertify.error("Fallo el servidor :(");
+            }
+        }
+    });
+}
+
+function finalizartarea(id) {
+
+    cadena = "id=" + id;
+
+    $.ajax({
+        type: "POST",
+        url: "php/finalizartarea.php",
+        data: cadena,
+        success: function (r) {
+            if (r == 1) {
+               $('#tabla_criterios_aceptacion').load('componentes/tabla_criterios_aceptacion.php');
+                $('#tabla_tareas').load('componentes/tabla_tareas.php');
+                 alertify.success("Eliminado con exito!");
+            } else {
+                alertify.error("Fallo el servidor :(");
+            }
+        }
+    });
+}
+
+
+function preguntarSiNocriterio(id) {
+    alertify.confirm('Eliminar criterio', '¿Esta seguro de eliminar este criterio?',
+            function () {
+                eliminarDatoscriterio(id)
+            }
+    , function () {
+        alertify.error('Se cancelo')
+    });
+}
+
+
+function eliminarDatoscriterio(id) {
+
+    cadena = "id=" + id;
+
+    $.ajax({
+        type: "POST",
+        url: "php/eliminarDatoscriterio.php",
+        data: cadena,
+        success: function (r) {
+            if (r == 1) {
+               $('#tabla_criterios_aceptacion').load('componentes/tabla_criterios_aceptacion.php');
+                $('#tabla_tareas').load('componentes/tabla_tareas.php');
+                 alertify.success("Eliminado con exito!");
+            } else {
+                alertify.error("Fallo el servidor :(");
+            }
+        }
+    });
+}
+
+
+function agregaformcriterio(datos) {
+
+    d = datos.split('||');
+
+    $('#idcriterio_edt').val(d[0]);
+    $('#escenarioc').val(d[1]);
+    $('#desencadenantec').val(d[2]);
+    $('#resultadoc').val(d[3]);
+
+}

@@ -23,7 +23,8 @@ require_once "../../../conexionbd/connectDB.php";
             </tr>
 
             <?php
-            $sql = "SELECT * from epicas order by epica";
+            $id_proyecto = $_SESSION['id_proyecto'];
+            $sql = "SELECT * from epicas where id_proyecto = '$id_proyecto' order by epica";
 
 
             $result = mysqli_query($connect, $sql);

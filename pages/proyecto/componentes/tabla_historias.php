@@ -29,7 +29,8 @@ require_once "../../../conexionbd/connectDB.php";
             </tr>
 
             <?php
-            $sql = "SELECT * from historias order by prioridad, puntaje,rol";
+            $id_epicas =$_SESSION['id_epicas'];
+            $sql = "SELECT * from historias where id_epica='$id_epicas' order by prioridad, puntaje,rol";
 
 
             $result = mysqli_query($connect, $sql);
@@ -69,9 +70,9 @@ require_once "../../../conexionbd/connectDB.php";
                     
                     </td>
                     <td>
-                    <form action='detalle_historia.php' method='post' id="myForm">
-                         <input type="hidden" id="id_epicas" name="id_historia" value="<?php echo $ver[0] ?>">
-                         <input type="hidden" id="id_epicas_name" name="id_historia_name" value="<?php echo $ver[1]." ".$ver[2]." ".$ver[3]." ".$ver[4]." ".$ver[5]." ".$ver[6];?>">
+                    <form action='historias_detalle.php' method='post' id="myForm">
+                         <input type="hidden" id="id_historia" name="id_historia" value="<?php echo $ver[0] ?>">
+                         <input type="hidden" id="id_historia_name" name="id_historia_name" value="<?php echo $ver[1]." ".$ver[2]." ".$ver[3]." ".$ver[4]." ".$ver[5]." ".$ver[6];?>">
                       <button class=" btn btn-success glyphicon glyphicon-eye-open" onclick="document.getElementById('myForm').submit()"></button>
                     </form>
                      </td>

@@ -8,8 +8,8 @@ require_once ('./componentes/ModalHistoria.php');
 $id_epicas = $_POST["id_epicas"]; 
 $id_epicas_name = $_POST["id_epicas_name"]; 
 
-$_SESSION['$id_epicas'] = $id_epicas;
-$_SESSION['$id_epicas_name'] = $id_epicas_name;
+$_SESSION['id_epicas'] = $id_epicas;
+$_SESSION['id_epicas_name'] = $id_epicas_name;
 
 ?>
 <script src="../../pages/proyecto/js/funciones.js"></script> 

@@ -8,11 +8,11 @@
                 <h4 class="modal-title" id="myModalLabel">Agrega nueva Epica</h4>
             </div>
             <div class="modal-body">
-                <label>Como</label>
+                <label>Como :</label>
                 <input type="text"  placeholder="escriba el nombre de usuario" name="" id="usuario" class="form-control input-sm">
-                <label>necesito/deseo</label>
+                <label>necesito/deseo :</label>
                 <input type="text"  placeholder="escriba la necesidad" name="" id="necesidad" class="form-control input-sm">
-                <label>para (la razón)</label>
+                <label>para (la razón) :</label>
                 <input type="text"  placeholder="escriba para qué necesita" name="" id="razon" class="form-control input-sm">
                 <input type="hidden" id="id_epicas" name="" value="<?php echo $_SESSION['$id_epicas']; ?>">
             </div>

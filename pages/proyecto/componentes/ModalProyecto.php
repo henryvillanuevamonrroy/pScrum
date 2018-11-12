@@ -6,9 +6,9 @@
         <h4 class="modal-title" id="myModalLabel">Agrega nuevo proyecto</h4>
       </div>
       <div class="modal-body">
-        	<label>Proyecto</label>
+        	<label>Proyecto :</label>
                 <input type="text"  placeholder="proyecto" name="" id="proyecto" class="form-control input-sm">
-                <label>Descripci&oacute;n</label>
+                <label>Descripci&oacute;n :</label>
                 <textarea  placeholder="decripcion" name="" id="descripcion" class="form-control input-sm" rows="5"></textarea>
           </div>
       <div class="modal-footer">
