@@ -182,121 +182,28 @@
                 <!-- sidebar menu: : style can be found in sidebar.less -->
                 <ul class="sidebar-menu">
                     <li class="header">MENÚ DE OPCIONES</li>
-                    <?php if ($_SESSION['rol'] == "Director" || $_SESSION['rol'] == "SubDirector" || $_SESSION['rol'] == "Administrador") { ?>    
-                        <li class=" treeview"> <!-- si quiero que se active tengo que colocar la clase active class="active treeview" -->
-                            <a href="#">
-                                <?php /* https://www.w3schools.com/icons/fontawesome_icons_webapp.asp */ ?>
-                                <i class="fa fa-user"></i> <span>Usuarios</span>
-                                <span class="pull-right-container">
-                                    <i class="fa fa-angle-left pull-right"></i>
-                                </span>
-                            </a>
-                            <ul class="treeview-menu">
-                                <li><a href="../../pages/usuarios/new_users.php"><i class="fa fa-circle-o"></i>Reg. de Usuarios</a></li>
-
-                                <!-- Gestion de usuarios -->
-                                <li><a href="../../pages/usuarios/users.php"><i class="fa fa-circle-o"></i>Consultar Usuarios</a></li>
-                            </ul> 
-
-
-
-                        </li>
-
-                        <li class=" treeview"> <!-- si quiero que se active tengo que colocar la clase active class="active treeview" -->
-                            <a href="#">
-                                <?php /* https://www.w3schools.com/icons/fontawesome_icons_webapp.asp */ ?>
-                                <i class="fa fa-user"></i> <span>Configuraciones</span>
-                                <span class="pull-right-container">
-                                    <i class="fa fa-angle-left pull-right"></i>
-                                </span>
-                            </a>
-                            <ul class="treeview-menu">
-                                <li><a href="../../pages/horario/horarios.php"><i class="fa fa-circle-o"></i>Horario y Calendario</a></li>       
-                                <li><a href="../../pages/cursos/cursos.php"><i class="fa fa-circle-o"></i>Cursos</a></li>       
-
-                            </ul> 
-
-
-
-                        </li>
-                    <?php } ?>
-
                     <li class=" treeview"> <!-- si quiero que se active tengo que colocar la clase active class="active treeview" -->
                         <a href="#">
-                            <i class="	fa fa-bookmark"></i> <span>Estudiantes</span>
+                            <i class="fa fa-user"></i> <span>Usuarios</span>
                             <span class="pull-right-container">
                                 <i class="fa fa-angle-left pull-right"></i>
                             </span>
                         </a>
                         <ul class="treeview-menu">
+                            <li><a href="../../pages/usuarios/new_users.php"><i class="fa fa-circle-o"></i>Reg. de Usuarios</a></li>
+
+                            <!-- Gestion de usuarios -->
+                            <li><a href="../../pages/usuarios/users.php"><i class="fa fa-circle-o"></i>Consultar Usuarios</a></li>
+                        </ul> 
 
 
 
-                            <?php if ($_SESSION['rol'] == "Administrador") { ?>
-                                <li><a href="../../pages/calificaciones/calificaciones.php"><i class="fa fa-circle-o"></i>Calificaciones</a></li>
-                                <li><a href="../../pages/requerimiento/agregar_req.php"><i class="fa fa-circle-o"></i>Conducta</a></li>
-                                <li><a href="../../pages/requerimiento/agregar_req.php"><i class="fa fa-circle-o"></i>Tareas</a></li>
-                                <li><a href="../../pages/requerimiento/agregar_req.php"><i class="fa fa-circle-o"></i>Comunicados</a></li>
-                            <?php } ?>
-
-                            <?php if ($_SESSION['rol'] == "Director" || $_SESSION['rol'] == "SubDirector") { ?>
-                                <li><a href="../../pages/calificaciones/calificaciones.php"><i class="fa fa-circle-o"></i>Calificaciones</a></li>
-                                <li><a href="../../pages/requerimiento/agregar_req.php"><i class="fa fa-circle-o"></i>Conducta</a></li>
-                                <li><a href="../../pages/requerimiento/agregar_req.php"><i class="fa fa-circle-o"></i>Tareas</a></li>
-                                <li><a href="../../pages/requerimiento/agregar_req.php"><i class="fa fa-circle-o"></i>Comunicados</a></li>
-                            <?php } ?>
-
-                            <?php if ($_SESSION['rol'] == "Docente") { ?>
-                                <li><a href="../../pages/calificaciones/calificaciones.php"><i class="fa fa-circle-o"></i>Calificaciones</a></li>
-                                <li><a href="../../pages/requerimiento/agregar_req.php"><i class="fa fa-circle-o"></i>Tareas</a></li>
-                                <li><a href="../../pages/requerimiento/agregar_req.php"><i class="fa fa-circle-o"></i>Comunicados</a></li>
-                            <?php } ?>
-
-                            <?php if ($_SESSION['rol'] == "Auxiliar") { ?>
-                                <li><a href="../../pages/requerimiento/agregar_req.php"><i class="fa fa-circle-o"></i>Conducta</a></li>
-                                <li><a href="../../pages/requerimiento/agregar_req.php"><i class="fa fa-circle-o"></i>Tareas</a></li>
-                                <li><a href="../../pages/requerimiento/agregar_req.php"><i class="fa fa-circle-o"></i>Comunicados</a></li>
-                            <?php } ?>
-
-                            <?php if ($_SESSION['rol'] == "Administrativo") { ?>
-                                <li><a href="../../pages/requerimiento/agregar_req.php"><i class="fa fa-circle-o"></i>Tareas</a></li>
-                                <li><a href="../../pages/requerimiento/agregar_req.php"><i class="fa fa-circle-o"></i>Comunicados</a></li>
-
-                            <?php } ?>
-
-
-
-
-                        </ul>
                     </li>
 
 
 
-                    <li class=" treeview"> <!-- si quiero que se active tengo que colocar la clase active class="active treeview" -->
-                        <a href="#">
-                            <i class="fa fa-newspaper-o"></i> <span>Reportes</span>
-                            <span class="pull-right-container">
-                                <i class="fa fa-angle-left pull-right"></i>
-                            </span>
-                        </a>
-                        <ul class="treeview-menu">
-                            <!-- PARA LOS PADRES Y ALUMNOS-->
-                            <?php if ($_SESSION['rol'] == "Estudiante") { ?>
-                                <li><a href="../../pages/requerimiento/agregar_req.php"><i class="fa fa-circle-o"></i>Notas</a></li>
-                                <li><a href="../../pages/requerimiento/agregar_req.php"><i class="fa fa-circle-o"></i>Conducta</a></li>
-                                <li><a href="../../pages/requerimiento/agregar_req.php"><i class="fa fa-circle-o"></i>Tareas</a></li>
-                                <li><a href="../../pages/requerimiento/agregar_req.php"><i class="fa fa-circle-o"></i>Comunicados</a></li>
-                            <?php } else { ?>
-                                <li><a href="../../pages/requerimiento/agregar_req.php"><i class="fa fa-circle-o" ></i>Notas</a></li>
-                                <li><a href="../../pages/requerimiento/agregar_req.php"><i class="fa fa-circle-o"></i>Conducta</a></li>
-                                <li><a href="../../pages/requerimiento/agregar_req.php"><i class="fa fa-circle-o"></i>Tareas</a></li>
-                                <li><a href="../../pages/requerimiento/agregar_req.php"><i class="fa fa-circle-o"></i>Comunicados</a></li>
-                            <?php } ?>
-                        </ul>
-                    </li>
 
-                    
-                    
+
                     <li class=" treeview"> <!-- si quiero que se active tengo que colocar la clase active class="active treeview" -->
                         <a href="#">
                             <i class="fa fa-newspaper-o"></i> <span>Proyectos</span>
@@ -305,23 +212,12 @@
                             </span>
                         </a>
                         <ul class="treeview-menu">
-                                <li><a href="../../pages/proyecto/proyectos.php"><i class="fa fa-circle-o"></i>Administrar proyectos</a></li>
-                             
+                            <li><a href="../../pages/proyecto/proyectos.php"><i class="fa fa-circle-o"></i>Administrar proyectos</a></li>
+
                         </ul>
                     </li>
-                    
-                    <li class=" treeview"> <!-- si quiero que se active tengo que colocar la clase active class="active treeview" -->
-                        <a href="#">
-                            <i class="fa fa-newspaper-o"></i> <span>Epicas</span>
-                            <span class="pull-right-container">
-                                <i class="fa fa-angle-left pull-right"></i>
-                            </span>
-                        </a>
-                        <ul class="treeview-menu">
-                                <li><a href="../../pages/epicas/epicas.php"><i class="fa fa-circle-o"></i>Administrar epicas</a></li>
-                             
-                        </ul>
-                    </li>
+
+
 
 
                 </ul>

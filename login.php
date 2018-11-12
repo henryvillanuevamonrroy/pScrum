@@ -68,11 +68,11 @@ if ($_POST) {
                         Administrativo
                      *                      */
                         case 'Administrador':
-                             header('location: pages/novedades/novedades.php');
+                             header('location: pages/proyecto/proyectos.php');
                             break;
                         
                         default : 
-                            header('location: pages/novedades/novedades.php');
+                            header('location: pages/proyecto/proyectos.php');
                             break;
                     }
 

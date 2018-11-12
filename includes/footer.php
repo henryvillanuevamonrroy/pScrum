@@ -4,7 +4,7 @@
                 <div class="pull-right hidden-xs">
                     <b>Version</b> 1.0
                 </div>
-                <strong>Copyright &copy; 2017-2018 <a href="https://gs4y.tk">GreatSolutions</a>.</strong> Todos los Derechos Reservados.
+                <strong>Copyright &copy; 2017-2018 <a href="https://gs4y.tk">HenryVillanueva</a>.</strong> Todos los Derechos Reservados.
             </footer>
 
       

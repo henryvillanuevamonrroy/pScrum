@@ -37,11 +37,12 @@ require_once "../../../conexionbd/connectDB.php";
                     <td><?php echo $ver[1] ?></td>
                     <td><?php echo $ver[2] ?></td>
                     <td>
-                        <form action='pagina.php' method='post'> 
-                           <input type='button' class=" btn btn-success glyphicon glyphicon-list-alt" > 
-                        </form>
-                        <button class=" btn btn-success glyphicon glyphicon-list-alt" onclick="ingresar_al_proyecto('<?php echo $ver[0] ?>')"></button>
-                    </td>
+                    <form action='epicas.php' method='post' id="myForm">
+                         <input type="hidden" id="id_proyecto" name="id_proyecto" value="<?php echo $ver[0] ?>">
+                         <input type="hidden" id="id_proyecto_name" name="id_proyecto_name" value="<?php echo $ver[1] ?>">
+                      <button class=" btn btn-success glyphicon glyphicon-list-alt" onclick="document.getElementById('myForm').submit()"></button>
+                    </form>
+                     </td>
                     <td>
                         <button class="btn btn-warning glyphicon glyphicon-pencil" data-toggle="modal" data-target="#modalEdicion_proyectos" onclick="agregaform('<?php echo $datos ?>')"></button>
                     </td>
